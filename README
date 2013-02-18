@@ -1,0 +1,14 @@
+
+A simple tool that downloads all files matching a search specification from
+Github. Downloaded files are written to files named user.repository. Existing
+files with the same name are skipped, which means that you can reasonably
+efficiently stop and resume a ghrab. 
+
+
+Examples
+--------
+
+    ghrabber path:.bash_history
+
+    ghrabber extension:key
+

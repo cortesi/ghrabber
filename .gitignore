@@ -1,0 +1,6 @@
+# Python object files
+*.py[cd]
+*.swp
+/data
+.coverage
+
