@@ -10,7 +10,8 @@ minor features on the site.
 
 ### Examples
 
+Grab all .bash_history files:
+`ghrabber.py "path:.bash_history"`
 
-    ghrabber.py "path:.bash_history"
-
-    ghrabber.py "extension:key"
+Grab all files with extension of .key:
+`ghrabber.py "extension:key"`
