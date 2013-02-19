@@ -17,8 +17,8 @@ Check out this code:
 
 Grab all .bash_history files:
 
-`./ghrabber.py "path:.bash_history"`
+    ./ghrabber.py "path:.bash_history"
 
 Grab all files with extension of .key:
 
-`./ghrabber.py "extension:key"`
+    ./ghrabber.py "extension:key"
