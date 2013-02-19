@@ -8,10 +8,17 @@ Note that this is a Quick Hack that may break whenever Github changes even
 minor features on the site.
 
 
-### Examples
+### Usage:
+
+Check out this code: 
+
+    git clone git@github.com:cortesi/ghrabber.git
+    cd ghrabber
 
 Grab all .bash_history files:
-`ghrabber.py "path:.bash_history"`
+
+`./ghrabber.py "path:.bash_history"`
 
 Grab all files with extension of .key:
-`ghrabber.py "extension:key"`
+
+`./ghrabber.py "extension:key"`
