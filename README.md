@@ -10,10 +10,13 @@ minor features on the site.
 
 ### Usage:
 
-Check out this code: 
+Check out this code and install BeautifulSoup: 
 
     git clone git@github.com:cortesi/ghrabber.git
     cd ghrabber
+    pip install beautifulsoup
+    
+If pip is not installed, try to install it with `easy_install pip` first
 
 Grab all .bash_history files:
 
