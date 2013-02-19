@@ -8,7 +8,18 @@ Note that this is a Quick Hack that may break whenever Github changes even
 minor features on the site.
 
 
-### Usage:
+### Usage
+
+Grab all .bash_history files:
+
+    ./ghrabber.py "path:.bash_history"
+
+Grab all files with extension of .key:
+
+    ./ghrabber.py "extension:key"
+
+
+### Installation
 
 Check out this code and install BeautifulSoup: 
 
@@ -18,10 +29,3 @@ Check out this code and install BeautifulSoup:
     
 If pip is not installed, try to install it with `easy_install pip` first
 
-Grab all .bash_history files:
-
-    ./ghrabber.py "path:.bash_history"
-
-Grab all files with extension of .key:
-
-    ./ghrabber.py "extension:key"
