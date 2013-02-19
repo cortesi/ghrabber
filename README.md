@@ -21,11 +21,11 @@ Grab all files with extension of .key:
 
 ### Installation
 
-Check out this code and install BeautifulSoup: 
+Check out this code and install the dependencies: 
 
     git clone git@github.com:cortesi/ghrabber.git
     cd ghrabber
-    pip install beautifulsoup
+    pip install beautifulsoup requests
     
 If pip is not installed, try to install it with `easy_install pip` first
 
