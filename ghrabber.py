@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-import argparse, os.path
+import argparse
+import os.path
+
 import BeautifulSoup
 import requests
 
@@ -8,9 +10,10 @@ REM_OFFSET = 2
 RAWBASE = "https://raw.github.com/"
 SEARCH = "https://github.com/search"
 
+
 def extract(data):
     s = BeautifulSoup.BeautifulSoup(data)
-    for i in s.findAll("p", {"class":"title"}):
+    for i in s.findAll("p", {"class": "title"}):
         p = i.findAll("a")
         # The second link is the reference...
         yield p[1].get("href")
@@ -18,7 +21,7 @@ def extract(data):
 
 def is_last_page(data):
     s = BeautifulSoup.BeautifulSoup(data)
-    if s.find("p", {"class":"title"}):
+    if s.find("p", {"class": "title"}):
         return False
     else:
         return True
@@ -50,7 +53,7 @@ def get(query, outdir, listonly=False):
             print "** No more results"
             break
         for u in extract(r.content):
-            ru = raw_url(u) 
+            ru = raw_url(u)
             if listonly:
                 print ru
             else:
@@ -72,8 +75,14 @@ def get(query, outdir, listonly=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-l", action="store_true", help="Just list results")
-    parser.add_argument("-o", type=str, default=".", help="Output directory. Created if it doesn't exist.")
+    parser.add_argument(
+        "-l", action="store_true",
+        help="Just list results"
+    )
+    parser.add_argument(
+        "-o", type=str, default=".",
+        help="Output directory. Created if it doesn't exist."
+    )
     parser.add_argument("query", type=str, help="Github Code Search query")
     args = parser.parse_args()
     if not os.path.exists(args.o):
