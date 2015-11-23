@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import os.path
+import urllib
 
 import BeautifulSoup
 import requests
@@ -40,7 +41,7 @@ def make_fname(p):
     return parts[0] + "." + parts[1]
 
 
-def get(query, outdir, listonly=False):
+def get(query, relative, outdir, listonly=False):
     page = 1
     while 1:
         params = dict(
@@ -54,6 +55,8 @@ def get(query, outdir, listonly=False):
             break
         for u in extract(r.content):
             ru = raw_url(u)
+            if relative:
+                ru = urllib.basejoin(ru, relative)
             if listonly:
                 print ru
             else:
@@ -83,11 +86,15 @@ if __name__ == "__main__":
         "-o", type=str, default=".",
         help="Output directory. Created if it doesn't exist."
     )
+    parser.add_argument(
+        "-r", type=str, default=None,
+        help="Grab a path relative to the match"
+    )
     parser.add_argument("query", type=str, help="Github Code Search query")
     args = parser.parse_args()
     if not os.path.exists(args.o):
         os.makedirs(args.o)
     try:
-        get(args.query, args.o, listonly=args.l)
+        get(args.query, args.r, args.o, listonly=args.l)
     except KeyboardInterrupt:
         pass
