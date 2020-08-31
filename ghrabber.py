@@ -3,7 +3,7 @@ import argparse
 import os.path
 import urllib
 
-import BeautifulSoup
+from bs4 import BeautifulSoup
 import requests
 
 # Offset of path component to delete when converting to raw
@@ -51,28 +51,28 @@ def get(query, relative, outdir, listonly=False):
         )
         r = requests.get(SEARCH, params=params)
         if is_last_page(r.content):
-            print "** No more results"
+            print("** No more results")
             break
         for u in extract(r.content):
             ru = raw_url(u)
             if relative:
                 ru = urllib.basejoin(ru, relative)
             if listonly:
-                print ru
+                print(ru)
             else:
                 fn = make_fname(u)
                 outpath = os.path.join(outdir, fn)
                 if os.path.exists(outpath):
-                    print "Skipping ", fn
+                    print("Skipping ", fn)
                 else:
                     ret = requests.get(ru)
                     if ret.status_code == 200:
-                        print "Fetching ", ru
+                        print("Fetching ", ru)
                         f = open(outpath, "w")
                         f.write(ret.content)
                         f.close()
                     else:
-                        print "Error", fn, ret.status_code
+                        print("Error", fn, ret.status_code)
         page += 1
 
 
